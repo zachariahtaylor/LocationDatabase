@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', routes);
 
 
-app.listen(80, function () {
-    console.log('Server listening on port 80.');
+app.listen(8080, function () {
+    console.log('Server listening on port 8080.');
 });
 
 mongoose.connect('mongodb://localhost/Locations', function(err) {
