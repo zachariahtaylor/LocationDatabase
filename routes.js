@@ -48,6 +48,30 @@ router.get('/GET/Location', function(req, res){
 router.get('/GET/Location/:id', function(req, res) {
 });
 
+router.put('/PUT/Location', function(req, res) {
+    
+    console.log('/PUT/Location');
+    console.log(req.body);
+     console.log(req.body.ID);
+
+    var query = req.body.ID;
+    
+    var newData = {
+        Lat: req.body.Lat,
+        Lon: req.body.Lon
+    };
+    
+    Location.findOneAndUpdate(query, newData, {upsert:true}).then(function(result){
+			res.json({
+				location: result
+			});
+		}).catch(function(error) {
+			res.json({
+				error: error.message
+			});
+		})
+});
+
 router.post('/POST/Location', function(req, res) {
 
 	//var User = req.body.ID;
