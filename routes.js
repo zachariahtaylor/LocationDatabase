@@ -61,10 +61,10 @@ router.put('/PUT/Location', function(req, res) {
         Lon: req.body.Lon
     };
     
-    Location.findOneAndUpdate(query, newData, {upsert:true}).then(function(result){
+    Location.where('ID', req.body.ID).update({$set: {Lat: req.body.Lat, Lon: req.body.Lon}}).then(function(result){
 			res.json({
 				location: result
-			});
+			}); 
 		}).catch(function(error) {
 			res.json({
 				error: error.message
