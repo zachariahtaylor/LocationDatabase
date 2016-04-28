@@ -54,9 +54,9 @@ router.put('/PUT/Location', function(req, res) {
     console.log(req.body);
      console.log(req.body.ID);
 
-    var query = req.body.ID;
+
     
-    var newData = {
+  /*  var newData = {
         Lat: req.body.Lat,
         Lon: req.body.Lon
     };
@@ -69,7 +69,14 @@ router.put('/PUT/Location', function(req, res) {
 			res.json({
 				error: error.message
 			});
-		})
+		})*/
+    
+    var query = {'ID':req.body.ID};
+    
+    Location.findOneAndUpdate(query, {Lat: req.body.Lat, Lon: req.body.Lon}, {upsert:true}, function(err, doc){
+        if(err){return res.json({error: err});}
+        return res.json({location: doc});
+    });
 });
 
 router.post('/POST/Location', function(req, res) {
