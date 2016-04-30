@@ -35,6 +35,15 @@
             data: {ID : "Cow", Lat : "Updated", Lon : "updated"} // Some data e.g. Valid JSON as a string
         });
     };
+    
+    function PutTest(){
+        $.ajax({
+            type: 'PUT', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+            dataType: 'json', // Set datatype - affects Accept header
+            url: "http://httpbin.org/put", // A valid URL
+            data: {ID : "Cow", Lat : "Updated", Lon : "updated"} // Some data e.g. Valid JSON as a string
+        });
+    };
 
 </script>
 </head>
@@ -42,5 +51,6 @@
     <button onclick="Post()">Post</button>
     <button onclick="Get()">Get</button>
     <button onclick="Put()">Put</button>
+    <button onclick="PutTest()">Put Test</button>
 </body>
 </html>

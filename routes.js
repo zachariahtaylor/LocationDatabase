@@ -53,6 +53,7 @@ router.put('/PUT/Location', function(req, res) {
     console.log('/PUT/Location');
     console.log(req.body);
     console.log(req.body.ID);
+    
 
 
     
@@ -70,6 +71,20 @@ router.put('/PUT/Location', function(req, res) {
 				error: error.message
 			});
 		})*/
+    
+    /*var query = {'ID':req.body.ID};
+    
+    Location.findOneAndUpdate(query, {Lat: req.body.Lat, Lon: req.body.Lon}, {upsert:true}, function(err, doc){
+        if(err){return res.json({error: err});}
+        return res.json({location: doc});
+    });*/
+});
+
+router.put('/POST/Update', function(req, res) {
+    
+    console.log('/POST/Update');
+    console.log(req.body);
+    console.log(req.body.ID);
     
     var query = {'ID':req.body.ID};
     
