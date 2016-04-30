@@ -52,7 +52,7 @@ router.put('/PUT/Location', function(req, res) {
     
     console.log('/PUT/Location');
     console.log(req.body);
-     console.log(req.body.ID);
+    console.log(req.body.ID);
 
 
     
@@ -84,6 +84,8 @@ router.post('/POST/Location', function(req, res) {
 	//var User = req.body.ID;
     //console.log(req.body);
     console.log("/POST/Location");
+    console.log(req.body);
+    console.log(req.body.ID);
     
     var data = new Location (req.body);
     
