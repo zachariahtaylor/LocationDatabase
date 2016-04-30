@@ -80,7 +80,7 @@ router.put('/PUT/Location', function(req, res) {
     });*/
 });
 
-router.put('/POST/Update', function(req, res) {
+router.post('/POST/Update', function(req, res) {
     
     console.log('/POST/Update');
     console.log(req.body);
