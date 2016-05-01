@@ -9,11 +9,11 @@
     
 <script>
     function Post(){
-        $.post("/POST/Location",
+        $.post("POST/Location",
         {
-          ID: "Donald Duck",
-          Lat: "Duckburg",
-            Lon: "Duckburg"
+          ID: $('#ID').val(),
+          Lat: $('#Lat').val(),
+            Lon: $('#Lon').val()
         },
         function(data,status){
             alert("Data: " + data.location.ID + "\nStatus: " + status);
@@ -21,19 +21,22 @@
     };
     
     function Get(){
-        $.get("/GET/Location",
+        $.get("GET/Location",
         function(data,status){
-            alert("Data: " + data[0].ID + "\nStatus: " + status);
         });
     };
     
     function Put(){
+        if(($('#ID').val() != "")&& ($('#Lat').val() != "") && ($('#Lon').val() != "")){
+            
+       
         $.ajax({
             type: 'PUT', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
             dataType: 'json', // Set datatype - affects Accept header
             url: "/PUT/Location", // A valid URL
-            data: {ID : "Cow", Lat : "Updated", Lon : "updated"} // Some data e.g. Valid JSON as a string
+            data: {ID : $('#ID').val(), Lat : $('#Lat').val(), Lon : $('#Lon').val()} // Some data e.g. Valid JSON as a string
         });
+             }
     };
     
     function PutTest(){
@@ -41,16 +44,20 @@
             type: 'PUT', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
             dataType: 'json', // Set datatype - affects Accept header
             url: "http://httpbin.org/put", // A valid URL
-            data: {ID : "Cow", Lat : "Updated", Lon : "updated"} // Some data e.g. Valid JSON as a string
+            data: {ID : $('#ID').val(), Lat : $('#Lat').val(), Lon : $('#Lon').val()} // Some data e.g. Valid JSON as a string
         });
     };
 
 </script>
 </head>
 <body>
+    <label>ID</label>   <input id="ID" type="text"><br>
+    <label>Lat</label>   <input id="Lat" type="text"><br>
+    <label>Lon</label>   <input id="Lon" type="text"><br>
+    
     <button onclick="Post()">Post</button>
     <button onclick="Get()">Get</button>
-    <button onclick="Put()">Put</button>
-    <button onclick="PutTest()">Put Test</button>
+    <!--<button onclick="Put()">Put</button>-->
+    <!--<button onclick="PutTest()">Put Test</button>-->
 </body>
 </html>
